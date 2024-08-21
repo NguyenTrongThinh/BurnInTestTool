@@ -1,0 +1,27 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:System="clr-namespace:System;assembly=System.Runtime">
+    <System:String x:Key="app_name">Kiểm Tra Đốt Nóng</System:String>
+    <System:String x:Key="menu_File">Tập tin</System:String>
+    <System:String x:Key="menu_export_db">Xuất dữ liệu</System:String>
+    <System:String x:Key="menu_exit">Thoát</System:String>
+    <System:String x:Key="menu_setting">Cài đặt</System:String>
+    <System:String x:Key="menu_lang">Ngôn ngữ</System:String>
+    <System:String x:Key="menu_lang_en">English</System:String>
+    <System:String x:Key="menu_lang_vi">Tiêng Việt</System:String>
+    <System:String x:Key="menu_setting_burnin">Kiểm tra đốt nóng</System:String>
+    <System:String x:Key="menu_help">Trợ giúp</System:String>
+    <System:String x:Key="menu_about">Thông tin</System:String>
+    <System:String x:Key="msg_create_defaul_burn_setting_failed">Khởi tạo cài đặt kiểm thử đốt nóng không thành công. Ứng dụng sẽ hoạt động không ổn định.</System:String>
+    <System:String x:Key="btnOK_Text">Đồng ý</System:String>
+    <System:String x:Key="btnCancel_Text">Hủy</System:String>
+    <System:String x:Key="burnin_setting_windows_name">Cài đặt kiểm tra đốt cháy</System:String>
+    <System:String x:Key="about_windows_name">Thông Tin</System:String>
+    <System:String x:Key="tab_stress_cpu_ecu">Kiểm thử căn thẳng CPU ECU</System:String>
+    <System:String x:Key="tab_stress_cpu_ctr">Kiểm thử căng thẳng CPU CTR</System:String>
+    <System:String x:Key="tab_turn_on_leds">Bật tất cả LEDs</System:String>
+    <System:String x:Key="tab_polling_nfc_card">Đọc liên tục thẻ NFC</System:String>
+    <System:String x:Key="tab_lcd_brightness">Độ sáng LCD</System:String>
+    <System:String x:Key="tab_play_audio">Phát âm thanh</System:String>
+    <System:String x:Key="check_execute">Thực thi</System:String>
+</ResourceDictionary>

@@ -1,0 +1,30 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:System="clr-namespace:System;assembly=System.Runtime">
+    <System:String x:Key="app_name">Burn-in Test Tool</System:String>
+    <System:String x:Key="menu_File">File</System:String>
+    <System:String x:Key="menu_export_db">Export Database</System:String>
+    <System:String x:Key="menu_exit">Exit</System:String>
+    <System:String x:Key="menu_setting">Setting</System:String>
+    <System:String x:Key="menu_lang">Languages</System:String>
+    <System:String x:Key="menu_lang_en">English</System:String>
+    <System:String x:Key="menu_lang_vi">Tiêng Việt</System:String>
+    <System:String x:Key="menu_setting_burnin">Burn-in Test</System:String>
+    <System:String x:Key="menu_help">Help</System:String>
+    <System:String x:Key="menu_about">About</System:String>
+    <System:String x:Key="msg_create_defaul_burn_setting_failed">Failure to establish default settings for failed burn-in tests may result in application instability.</System:String>
+    <System:String x:Key="btnOK_Text">OK</System:String>
+    <System:String x:Key="btnCancel_Text">Cancel</System:String>
+    <System:String x:Key="burnin_setting_windows_name">Burn-in Setting</System:String>
+    <System:String x:Key="about_windows_name">About</System:String>
+    <System:String x:Key="tab_stress_cpu_ecu">Stress Test CPU ECU</System:String>
+    <System:String x:Key="tab_stress_cpu_ctr">Stress Test CPU CTR</System:String>
+    <System:String x:Key="tab_turn_on_leds">Turn On All LEDs</System:String>
+    <System:String x:Key="tab_polling_nfc_card">Polling NFC Card</System:String>
+    <System:String x:Key="tab_lcd_brightness">LCD Brightness</System:String>
+    <System:String x:Key="tab_play_audio">Play Audio</System:String>
+    <System:String x:Key="check_execute">Execute</System:String>
+    <System:String x:Key="lbl_duration">Duration (s)</System:String>
+    <System:String x:Key="lbl_threads">Threads</System:String>
+    <System:String x:Key="lbl_cpu_percent">Percent (%)</System:String>
+</ResourceDictionary>

@@ -1,0 +1,117 @@
+﻿<Window x:Class="BurnInTestTool.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BurnInTestTool"
+        mc:Ignorable="d"
+        Title="{DynamicResource app_name}" Height="768" Width="1024">
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0">
+            <Menu VerticalAlignment="Top">
+                <MenuItem Header="{DynamicResource menu_File}">
+                    <MenuItem Header="{DynamicResource menu_export_db}" Name="mnuExportDb" Click="MnuExportBb_Click">
+                        <MenuItem.Icon>
+                            <Image Source="/images/icons8-data-migration-48.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="{DynamicResource menu_exit}" Name="mnuExit" Click="mnuExit_Click">
+                        <MenuItem.Icon>
+                            <Image Source="/images/icons8-close-48.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="{DynamicResource menu_setting}">
+                    <MenuItem Header="{DynamicResource menu_lang}" Name="mnuLang">
+                        <MenuItem.Icon>
+                            <Image Source="/images/icons8-language-48.png"/>
+                        </MenuItem.Icon>
+                        <MenuItem Header="{DynamicResource menu_lang_en}" Tag="en-US" Name="mnuEng" Click="mnuLang_Click">
+                            <MenuItem.Icon>
+                                <Image Source="/images/icons8-english-48.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="{DynamicResource menu_lang_vi}" Tag="vi-VN" Name="mnuVi" Click="mnuLang_Click">
+                            <MenuItem.Icon>
+                                <Image Source="/images/icons8-vietnam-48.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+
+                    </MenuItem>
+                    <MenuItem Header="{DynamicResource menu_setting_burnin}" Tag="vi-VN" Name="mnuBurnSetting" Click="mnuBurnSetting_Click">
+                        <MenuItem.Icon>
+                            <Image Source="/images/icons8-campfire-48.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+
+                </MenuItem>
+                <MenuItem Header="{DynamicResource menu_help}">
+                    <MenuItem Header="{DynamicResource menu_about}" Name="mnuAbout" Click="mnuAbout_Click">
+                        <MenuItem.Icon>
+                            <Image Source="/images/icons8-info-48.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+            </Menu>
+            <ToolBar VerticalAlignment="Top">
+                <Button Click="MnuExportBb_Click">
+                    <StackPanel>
+                        <Image Source="/images/icons8-data-migration-48.png" Width="25" Height="25"/>
+                    </StackPanel>
+                </Button>
+                <Button Click="mnuBurnSetting_Click">
+                    <StackPanel>
+                        <Image Source="/images/icons8-campfire-48.png" Width="25" Height="25"/>
+                    </StackPanel>
+                </Button>
+                <Button Click="mnuAbout_Click">
+                    <StackPanel>
+                        <Image Source="/images/icons8-info-48.png" Width="25" Height="25"/>
+                    </StackPanel>
+                </Button>
+            </ToolBar>
+        </StackPanel>
+
+        <ScrollViewer Grid.Row="1">
+            <StackPanel>
+                <!-- Adding many controls to demonstrate scrolling -->
+                <TextBlock Text="Item 1" FontSize="16" Margin="5"/>
+                <TextBlock Text="Item 2" FontSize="16" Margin="5"/>
+                <TextBlock Text="Item 3" FontSize="16" Margin="5"/>
+                <TextBlock Text="Item 4" FontSize="16" Margin="5"/>
+                <TextBlock Text="Item 5" FontSize="16" Margin="5"/>
+                <TextBlock Text="Item 6" FontSize="16" Margin="5"/>
+                <TextBlock Text="Item 7" FontSize="16" Margin="5"/>
+                <TextBlock Text="Item 8" FontSize="16" Margin="5"/>
+                <TextBlock Text="Item 9" FontSize="16" Margin="5"/>
+                <TextBlock Text="Item 10" FontSize="16" Margin="5"/>
+                <TextBlock Text="Item 11" FontSize="16" Margin="5"/>
+                <TextBlock Text="Item 12" FontSize="16" Margin="5"/>
+                <!-- Continue adding more items as needed -->
+            </StackPanel>
+        </ScrollViewer>
+
+        <StatusBar Grid.Row="2">
+            <StatusBarItem>
+                <TextBlock Text="Ready" />
+            </StatusBarItem>
+            <StatusBarItem>
+                <Separator />
+            </StatusBarItem>
+            <StatusBarItem>
+                <TextBlock Text="Line 1, Column 1" />
+            </StatusBarItem>
+            <StatusBarItem HorizontalAlignment="Right">
+                <ProgressBar Width="100" Height="16" IsIndeterminate="True" />
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Window>
