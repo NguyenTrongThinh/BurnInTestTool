@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Net.Sockets;
 using System.Security.Cryptography.Pkcs;
 using System.Text;
 using System.Threading.Tasks;
@@ -60,6 +61,10 @@ namespace BurnInTestTool
         private DataViewViewModel viewModel { get; set; }
         private DataViewDataClass dataViewDataClass { get; set; }
         public EventHandler? RemoveRequested;
+        private CancellationTokenSource? cancellationTokenSource;
+        private Task? getSystemInfo;
+        private TcpClient? tcpClient;
+        private delegate void SystemInformationReadyCallback(SystemInformationDataClass systemInformationData);
         public DataView()
         {
             InitializeComponent();
@@ -70,6 +75,67 @@ namespace BurnInTestTool
             this.Loaded += OnLoaded;
             this.Unloaded += OnUnloaded;
            
+        }
+
+
+        private void StartGetSystemInformationWorkerTask(SystemInformationReadyCallback? systemInfoCallback)
+        {
+
+            cancellationTokenSource = new CancellationTokenSource();
+            var token = cancellationTokenSource.Token;
+            try
+            {
+                getSystemInfo = Task.Run(async () =>
+                {
+                    tcpClient = new TcpClient();
+                    if (viewModel.BoardData?.ID?.IpAddress is not null)
+                    {
+                        //Task connectTask = tcpClient.ConnectAsync(viewModel.BoardData.ID.IpAddress, 6868);
+                        //Task completedTask = await Task.WhenAny(connectTask, Task.Delay(15000));
+                        //if (tcpClient.Connected)
+                        //{
+                        //    NetworkStream stream = tcpClient.GetStream();
+                        //    stream.ReadTimeout = 1;
+                        //    byte[] buffer = new byte[1024];
+                        //    while (token.IsCancellationRequested == false && tcpClient.Connected)
+                        //    {
+                        //            int bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length);
+                        //            if (bytesRead > 0)
+                        //            {
+                        //                string receivedData = Encoding.UTF8.GetString(buffer, 0, bytesRead);
+                        //            }
+                        //            //Dispatcher.Invoke(() => systemInfoCallback?.Invoke(discoveredBoard));
+
+                        //            Thread.Sleep(100);
+                        //        }
+                        //    }
+                        while (token.IsCancellationRequested == false )
+                        {
+                            Thread.Sleep(100);
+                        }
+                    }
+                    Dispatcher.Invoke(() => RemoveRequest());
+                }, token);
+            }
+            catch (Exception ex)
+            {
+                Log.Error("Create get Discover Thread Error: " + ex.Message);
+            }
+        }
+        private void StopGetSystemInformationWorkerTask()
+        {
+            try
+            {
+                if (cancellationTokenSource != null)
+                {
+                    cancellationTokenSource.Cancel();
+                }
+                getSystemInfo?.Wait();
+            }
+            catch (Exception ex)
+            {
+                Log.Error($"Stop get discover Thread Error: {ex.Message}");
+            }
         }
 
         public void SetBoardID(BoardID boardID)
@@ -92,10 +158,12 @@ namespace BurnInTestTool
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
             Log.Debug("User Control Loaded");
+            StartGetSystemInformationWorkerTask(UpdateSystemInformation);
         }
         private void OnUnloaded(object sender, RoutedEventArgs e)
         {
             Log.Debug("User Control Unloaded");
+            StopGetSystemInformationWorkerTask();
             this.Loaded -= OnLoaded;
             this.Unloaded -= OnUnloaded;
         }
@@ -103,6 +171,10 @@ namespace BurnInTestTool
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
             RemoveRequest();
+        }
+
+        private void UpdateSystemInformation(SystemInformationDataClass systemInformationData) {
+            Log.Debug("Update System information is called");
         }
 
     }
