@@ -78,7 +78,7 @@ namespace BurnInTestTool
             }
         }
 
-        private void btnOK_Click(object sender, RoutedEventArgs e)
+        private void ButtonOK_Clicked(object sender, RoutedEventArgs e)
         {
             if (DataContext is SettingViewModel viewModel)
             {
@@ -87,7 +87,7 @@ namespace BurnInTestTool
             this.Close();
         }
 
-        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        private void ButtonCancel_Clicked(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

@@ -5,7 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BurnInTestTool"
         mc:Ignorable="d"
-        Title="{DynamicResource app_name}" Height="768" Width="1024">
+        Title="{DynamicResource AppName}"
+        Height="768"
+        Width="1024">
+    <Window.DataContext>
+        <local:DataViewViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <Style x:Key="MenuItemHeaderStyle" TargetType="MenuItem">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Padding" Value="10,0,10,0"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="Cascadia Mono"/>
+        </Style>
+        <Style x:Key="ToolBarItemsStyle" TargetType="Image">
+            <Setter Property="Width" Value="35"/>
+            <Setter Property="Height" Value="35"/>
+        </Style>
+
+    </Window.Resources>
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -16,86 +35,94 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Row="0">
-            <Menu VerticalAlignment="Top">
-                <MenuItem Header="{DynamicResource menu_File}">
-                    <MenuItem Header="{DynamicResource menu_export_db}" Name="mnuExportDb" Click="MnuExportBb_Click">
+            <Menu>
+                <MenuItem Header="{DynamicResource MenuFileText}" Style="{StaticResource MenuItemHeaderStyle}">
+                    <MenuItem Header="{DynamicResource MenuNewDatabase}" Name="MenuNewDatabase" Click="MenuNewDatabase_Clicked">
                         <MenuItem.Icon>
-                            <Image Source="/images/icons8-data-migration-48.png"/>
+                            <Image Source="/images/icons8-add-to-database-48.png" />
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Header="{DynamicResource menu_exit}" Name="mnuExit" Click="mnuExit_Click">
+                    <MenuItem Header="{DynamicResource MenuImportDatababse}" Name="MenuImportDatabase" Click="MenuImportDatabase_Clicked">
+                        <MenuItem.Icon>
+                            <Image Source="/images/icons8-database-restore-48.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="{DynamicResource MenuExportDatababse}" Name="MenuExportDatabase" Click="MenuExportDatabase_Clicked">
+                        <MenuItem.Icon>
+                            <Image Source="/images/icons8-database-export-48.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="{DynamicResource MenuExit}" Name="MenuExit" Click="MenuExit_Clicked">
                         <MenuItem.Icon>
                             <Image Source="/images/icons8-close-48.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
                 </MenuItem>
-                <MenuItem Header="{DynamicResource menu_setting}">
-                    <MenuItem Header="{DynamicResource menu_lang}" Name="mnuLang">
+                <MenuItem  Header="{DynamicResource MenuSetting}" Style="{StaticResource MenuItemHeaderStyle}">
+                    <MenuItem  Header="{DynamicResource MenuLannguages}" Name="MenuLanguages">
                         <MenuItem.Icon>
                             <Image Source="/images/icons8-language-48.png"/>
                         </MenuItem.Icon>
-                        <MenuItem Header="{DynamicResource menu_lang_en}" Tag="en-US" Name="mnuEng" Click="mnuLang_Click">
+                        <MenuItem  Header="{DynamicResource MenuEnglishLanguages}" Tag="en-US" Name="MenuEnglishLanguages" Click="MenuLanguages_Clicked">
                             <MenuItem.Icon>
-                                <Image Source="/images/icons8-english-48.png"/>
+                                <Image Source="/images/icons8-district-of-columbia-flag-48.png" />
                             </MenuItem.Icon>
                         </MenuItem>
-                        <MenuItem Header="{DynamicResource menu_lang_vi}" Tag="vi-VN" Name="mnuVi" Click="mnuLang_Click">
+                        <MenuItem Header="{DynamicResource MenuVietnameseLanguages}" Tag="vi-VN" Name="MenuVietnameseLanguages" Click="MenuLanguages_Clicked">
                             <MenuItem.Icon>
-                                <Image Source="/images/icons8-vietnam-48.png"/>
+                                <Image Source="/images/icons8-vietnam-48.png" />
                             </MenuItem.Icon>
                         </MenuItem>
 
                     </MenuItem>
-                    <MenuItem Header="{DynamicResource menu_setting_burnin}" Tag="vi-VN" Name="mnuBurnSetting" Click="mnuBurnSetting_Click">
+                    <MenuItem  Header="{DynamicResource MenuBurnInSetting}" Tag="vi-VN" Name="MenuBurnInSetting" Click="MenuBurnInSetting_Clicked">
                         <MenuItem.Icon>
-                            <Image Source="/images/icons8-campfire-48.png"/>
+                            <Image Source="/images/icons8-setting-48.png" />
                         </MenuItem.Icon>
                     </MenuItem>
 
                 </MenuItem>
-                <MenuItem Header="{DynamicResource menu_help}">
-                    <MenuItem Header="{DynamicResource menu_about}" Name="mnuAbout" Click="mnuAbout_Click">
+                <MenuItem Header="{DynamicResource MenuHelp}" Style="{StaticResource MenuItemHeaderStyle}">
+                    <MenuItem  Header="{DynamicResource MenuAbout}" Name="MenuAbout" Click="MenuAbout_Clicked">
                         <MenuItem.Icon>
-                            <Image Source="/images/icons8-info-48.png"/>
+                            <Image Source="/images/icons8-information-48.png" />
                         </MenuItem.Icon>
                     </MenuItem>
                 </MenuItem>
             </Menu>
             <ToolBar VerticalAlignment="Top">
-                <Button Click="MnuExportBb_Click">
+                <Button Click="MenuNewDatabase_Clicked">
                     <StackPanel>
-                        <Image Source="/images/icons8-data-migration-48.png" Width="25" Height="25"/>
+                        <Image Source="/images/icons8-add-to-database-96.png" Style="{StaticResource ToolBarItemsStyle}"/>
                     </StackPanel>
                 </Button>
-                <Button Click="mnuBurnSetting_Click">
+                <Button Click="MenuImportDatabase_Clicked">
                     <StackPanel>
-                        <Image Source="/images/icons8-campfire-48.png" Width="25" Height="25"/>
+                        <Image Source="/images/icons8-database-restore-96.png" Style="{StaticResource ToolBarItemsStyle}"/>
                     </StackPanel>
                 </Button>
-                <Button Click="mnuAbout_Click">
+                <Button Click="MenuExportDatabase_Clicked">
                     <StackPanel>
-                        <Image Source="/images/icons8-info-48.png" Width="25" Height="25"/>
+                        <Image Source="/images/icons8-database-export-96.png" Style="{StaticResource ToolBarItemsStyle}"/>
+                    </StackPanel>
+                </Button>
+                <Separator Visibility="Visible" Width="auto" />
+                <Button Click="MenuBurnInSetting_Clicked">
+                    <StackPanel>
+                        <Image Source="/images/icons8-setting-96.png" Style="{StaticResource ToolBarItemsStyle}"/>
+                    </StackPanel>
+                </Button>
+                <Button Click="MenuAbout_Clicked">
+                    <StackPanel>
+                        <Image Source="/images/icons8-information-96.png" Style="{StaticResource ToolBarItemsStyle}"/>
                     </StackPanel>
                 </Button>
             </ToolBar>
         </StackPanel>
 
-        <ScrollViewer Grid.Row="1">
-            <StackPanel>
-                <!-- Adding many controls to demonstrate scrolling -->
-                <TextBlock Text="Item 1" FontSize="16" Margin="5"/>
-                <TextBlock Text="Item 2" FontSize="16" Margin="5"/>
-                <TextBlock Text="Item 3" FontSize="16" Margin="5"/>
-                <TextBlock Text="Item 4" FontSize="16" Margin="5"/>
-                <TextBlock Text="Item 5" FontSize="16" Margin="5"/>
-                <TextBlock Text="Item 6" FontSize="16" Margin="5"/>
-                <TextBlock Text="Item 7" FontSize="16" Margin="5"/>
-                <TextBlock Text="Item 8" FontSize="16" Margin="5"/>
-                <TextBlock Text="Item 9" FontSize="16" Margin="5"/>
-                <TextBlock Text="Item 10" FontSize="16" Margin="5"/>
-                <TextBlock Text="Item 11" FontSize="16" Margin="5"/>
-                <TextBlock Text="Item 12" FontSize="16" Margin="5"/>
-                <!-- Continue adding more items as needed -->
+        <ScrollViewer Grid.Row="1" Name="MainScrollView" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <StackPanel Name="ChildDataViewStackPanel">
+                
             </StackPanel>
         </ScrollViewer>
 

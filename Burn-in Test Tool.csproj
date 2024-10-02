@@ -7,25 +7,46 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
-    <ApplicationIcon>images\icons8-campfire-96.ico</ApplicationIcon>
+    <ApplicationIcon>images\app_icon.ico</ApplicationIcon>
     <PackageIcon>icons8-campfire-96.png</PackageIcon>
     <Version>1.0.0-alpha.4</Version>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="images\.png" />
+    <None Remove="images\add-database_128.png" />
+    <None Remove="images\add-database_24.png" />
+    <None Remove="images\app_icon.png" />
+    <None Remove="images\export-database_24.png" />
+    <None Remove="images\icons8-add-to-database-48.png" />
+    <None Remove="images\icons8-add-to-database-96.png" />
     <None Remove="images\icons8-campfire-48.ico" />
     <None Remove="images\icons8-campfire-48.png" />
     <None Remove="images\icons8-campfire-96.png" />
     <None Remove="images\icons8-close-48.png" />
+    <None Remove="images\icons8-close-96.png" />
     <None Remove="images\icons8-data-migration-48.png" />
+    <None Remove="images\icons8-database-export-48.png" />
+    <None Remove="images\icons8-database-export-96.png" />
+    <None Remove="images\icons8-database-restore-48.png" />
+    <None Remove="images\icons8-database-restore-96.png" />
+    <None Remove="images\icons8-district-of-columbia-flag-48.png" />
+    <None Remove="images\icons8-district-of-columbia-flag-96.png" />
     <None Remove="images\icons8-english-48.png" />
     <None Remove="images\icons8-error-48.png" />
     <None Remove="images\icons8-info-48.png" />
+    <None Remove="images\icons8-information-48.png" />
+    <None Remove="images\icons8-information-96.png" />
     <None Remove="images\icons8-language-48.png" />
+    <None Remove="images\icons8-language-96.png" />
+    <None Remove="images\icons8-setting-48.png" />
+    <None Remove="images\icons8-setting-96.png" />
     <None Remove="images\icons8-support-48.png" />
     <None Remove="images\icons8-vietnam-48.png" />
+    <None Remove="images\icons8-vietnam-96.png" />
     <None Remove="images\icons8-warning-48.png" />
+    <None Remove="images\import-database_24.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -39,25 +60,25 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="images\icons8-campfire-96.ico" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="images\icons8-campfire-48.ico" />
-    <Resource Include="images\icons8-campfire-48.png" />
-    <Resource Include="images\icons8-campfire-96.png">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </Resource>
+    <Resource Include="images\app_icon.png" />
+    <Resource Include="images\icons8-add-to-database-48.png" />
+    <Resource Include="images\icons8-add-to-database-96.png" />
     <Resource Include="images\icons8-close-48.png" />
-    <Resource Include="images\icons8-data-migration-48.png" />
-    <Resource Include="images\icons8-english-48.png" />
-    <Resource Include="images\icons8-error-48.png" />
-    <Resource Include="images\icons8-info-48.png" />
+    <Resource Include="images\icons8-close-96.png" />
+    <Resource Include="images\icons8-database-export-48.png" />
+    <Resource Include="images\icons8-database-export-96.png" />
+    <Resource Include="images\icons8-database-restore-48.png" />
+    <Resource Include="images\icons8-database-restore-96.png" />
+    <Resource Include="images\icons8-district-of-columbia-flag-48.png" />
+    <Resource Include="images\icons8-district-of-columbia-flag-96.png" />
+    <Resource Include="images\icons8-information-48.png" />
+    <Resource Include="images\icons8-information-96.png" />
     <Resource Include="images\icons8-language-48.png" />
-    <Resource Include="images\icons8-support-48.png" />
+    <Resource Include="images\icons8-language-96.png" />
+    <Resource Include="images\icons8-setting-48.png" />
+    <Resource Include="images\icons8-setting-96.png" />
     <Resource Include="images\icons8-vietnam-48.png" />
-    <Resource Include="images\icons8-warning-48.png" />
+    <Resource Include="images\icons8-vietnam-96.png" />
   </ItemGroup>
 
   <ItemGroup>

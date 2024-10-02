@@ -18,6 +18,10 @@ namespace BurnInTestTool
     /// </summary>
     public partial class MainWindow : Window
     {
+        private CancellationTokenSource? cancellationTokenSource;
+        private Task? getBroadCastTask;
+        
+
         public MainWindow()
         {
             InitializeComponent();
@@ -29,31 +33,33 @@ namespace BurnInTestTool
            .MinimumLevel.Debug()
            .CreateLogger();
             Log.Information("Application started.");
-           
+            StartGetBroadCastWorkerTask(AddDataView);
         }
 
         private void cancelEventHandler(object? sender, CancelEventArgs e)
         {
+            
+            StopGetBroadCastWorkerTask();
             Log.Information("Application Exited");
             Log.CloseAndFlush();
         }
 
-        private void MnuExportBb_Click(object sender, RoutedEventArgs e)
+        private void MenuExportDatabase_Clicked(object sender, RoutedEventArgs e)
         {
             Log.Debug("User Select Export Database Functions");
         }
       
-        private void mnuLang_Click(object sender, RoutedEventArgs e)
+        private void MenuLanguages_Clicked(object sender, RoutedEventArgs e)
         {
             AppSetting.setLanguage(((MenuItem)sender).Tag.ToString());
         }
 
-        private void mnuExit_Click(object sender, RoutedEventArgs e)
+        private void MenuExit_Clicked(object sender, RoutedEventArgs e)
         {
             System.Windows.Application.Current.Shutdown();
         }
 
-        private void mnuBurnSetting_Click(object sender, RoutedEventArgs e)
+        private void MenuBurnInSetting_Clicked(object sender, RoutedEventArgs e)
         {
             BurnInSettingWindows burnInSettingWindows = new BurnInSettingWindows();
             burnInSettingWindows.Owner = this;
@@ -61,12 +67,23 @@ namespace BurnInTestTool
             burnInSettingWindows.ShowDialog();
         }
 
-        private void mnuAbout_Click(object sender, RoutedEventArgs e)
+        private void MenuAbout_Clicked(object sender, RoutedEventArgs e)
         {
             AboutWindows aboutWindows = new AboutWindows();
             aboutWindows.Owner = this;
             aboutWindows.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             aboutWindows.ShowDialog();  
         }
+
+        private void MenuNewDatabase_Clicked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuImportDatabase_Clicked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
     }
 }

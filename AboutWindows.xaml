@@ -5,10 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BurnInTestTool"
         mc:Ignorable="d"
-        Title="{DynamicResource about_windows_name}" Height="180" Width="300">
+        Title="{DynamicResource AboutWindowsName}" Height="180" Width="300">
+    <Window.Resources>
+        <Style x:Key="MessageAppTilteStyle" TargetType="TextBlock">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="TextBlock.FontSize" Value="18"/>
+            <Setter Property="TextBlock.FontWeight" Value="Bold"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Padding" Value="10,0,10,0"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="Cascadia Mono"/>
+        </Style>
+        <Style x:Key="MessageAppVersionStyle" TargetType="TextBlock">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="TextBlock.FontSize" Value="16"/>
+            <Setter Property="TextBlock.FontWeight" Value="Normal"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Padding" Value="10,0,10,0"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="Cascadia Mono"/>
+        </Style>
+    </Window.Resources>
     <StackPanel>
-        <Image Source="/images/icons8-campfire-96.png" Width="60" Height="60"/>
-        <TextBlock x:Name="MessageTextBlock" TextWrapping="Wrap" Text="{DynamicResource app_name}" TextBlock.FontSize="18" TextBlock.FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"/>
-        <TextBlock x:Name="MessageAbout" TextWrapping="Wrap" Text="{DynamicResource app_name}" TextBlock.FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"/>
+        <Image Source="/images/app_icon.png" Width="60" Height="60"/>
+        <TextBlock x:Name="MessageTextBlock" Style="{StaticResource MessageAppTilteStyle}" Text="{DynamicResource AppName}" />
+        <TextBlock x:Name="MessageAbout"  Text="{DynamicResource AppName}" Style="{StaticResource MessageAppVersionStyle}"/>
     </StackPanel>
 </Window>
