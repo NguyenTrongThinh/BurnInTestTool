@@ -38,8 +38,7 @@
         <StackPanel  Grid.Column="0" Grid.Row="0">
             <Label  Name="BoardIPLabel" Style="{StaticResource BoardIPLabelStyle}" Content="{Binding BoardData.ID.IpAddress}"/>
             <Label  Name="BoardMACLabel" Style="{StaticResource BoardMACLabelStyle}" Content="{Binding BoardData.ID.MacAddress}" />
-            <Button Content="Start Delayed Task" Click="StartButton_Click" Width="150" Height="50" Margin="10"/>
-            
+
         </StackPanel>
     </Grid>
 </UserControl>

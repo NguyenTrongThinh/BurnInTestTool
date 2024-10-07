@@ -65,8 +65,8 @@ namespace BurnInTestTool
         {
             if (sender is DataView dataView)
             {
-                discoveredBoards.RemoveAll(item => (item == dataView.GetBoardID()));
-                ChildDataViewStackPanel.Children.Remove(dataView);
+               discoveredBoards.RemoveAll(item => (item == dataView.GetBoardID()));
+               Dispatcher.Invoke(()=> ChildDataViewStackPanel.Children.Remove(dataView));
             }
         }
 
