@@ -1,4 +1,5 @@
-﻿using Serilog;
+﻿using Microsoft.EntityFrameworkCore;
+using Serilog;
 using System.ComponentModel;
 using System.Text;
 using System.Windows;
@@ -20,7 +21,6 @@ namespace BurnInTestTool
     {
         private CancellationTokenSource? cancellationTokenSource;
         private Task? getBroadCastTask;
-        
 
         public MainWindow()
         {
@@ -33,8 +33,19 @@ namespace BurnInTestTool
            .MinimumLevel.Debug()
            .CreateLogger();
             Log.Information("Application started.");
+            InitializeDatabase();
             StartGetBroadCastWorkerTask(AddDataView);
         }
+
+        private void InitializeDatabase()
+        {
+            using(var context = new DatabaseManager())
+            {
+                context.InitializeDatabase();
+                context.SaveChanges();
+            }
+        }
+
 
         private void cancelEventHandler(object? sender, CancelEventArgs e)
         {

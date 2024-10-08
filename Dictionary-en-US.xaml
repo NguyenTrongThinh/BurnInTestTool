@@ -29,4 +29,14 @@
     <System:String x:Key="LableDuration">Duration (s)</System:String>
     <System:String x:Key="LableThreads">Threads</System:String>
     <System:String x:Key="LabelCPUPercent">Percent (%)</System:String>
+    <System:String x:Key="LabelMax">Max</System:String>
+    <System:String x:Key="LabelMin">Min</System:String>
+    <System:String x:Key="LabelAverage">Avergae</System:String>
+    <System:String x:Key="Voltage">Voltage</System:String>
+    <System:String x:Key="Current">Current</System:String>
+    <System:String x:Key="Power">Power</System:String>
+    <System:String x:Key="CPUUsage">CPU Usage</System:String>
+    <System:String x:Key="CPUFrequency">CPU Frequency</System:String>
+    <System:String x:Key="CPUTemperature">CPU Temperature</System:String>
+    <System:String x:Key="UsedMemory">Used Memory</System:String>
 </ResourceDictionary>
