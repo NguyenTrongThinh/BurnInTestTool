@@ -27,6 +27,16 @@
             <Setter Property="Padding" Value="10,0,10,0"/>
             <Setter Property="FontFamily" Value="Cascadia Mono"/>
         </Style>
+        <Style x:Key="BoardNameStyle" TargetType="Label">
+            <Setter Property="TextBlock.FontSize" Value="16"/>
+            <Setter Property="TextBlock.FontWeight" Value="Bold"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="10,0,10,0"/>
+            <Setter Property="FontFamily" Value="Cascadia Mono"/>
+            <Setter Property="Foreground" Value="Blue"/>
+        </Style>
         <Style x:Key="DataStyle" TargetType="Label">
             <Setter Property="TextBlock.FontSize" Value="15"/>
             <Setter Property="TextBlock.FontWeight" Value="Normal"/>
@@ -51,69 +61,240 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="150"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <StackPanel  Grid.Column="0" Grid.Row="0">
             <Label  Name="BoardIPLabel" Style="{StaticResource BoardIPLabelStyle}" Content="{Binding BoardData.IpAddress}"/>
             <Label  Name="BoardMACLabel" Style="{StaticResource BoardMACLabelStyle}" Content="{Binding BoardData.MacAddress}" />
         </StackPanel>
-        <Grid Grid.Column="1" Grid.Row="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Label Grid.Column="0" Grid.Row="1" Style="{StaticResource DataLabelStyle}" Content="{StaticResource LabelMax}" />
-            <Label Grid.Column="0" Grid.Row="2" Style="{StaticResource DataLabelStyle}" Content="{StaticResource LabelAverage}" />
-            <Label Grid.Column="0" Grid.Row="3" Style="{StaticResource DataLabelStyle}" Content="{StaticResource LabelMin}" />
-            <Label Grid.Column="1" Grid.Row="0" Style="{StaticResource DataLabelStyle}" Content="{StaticResource Voltage}" />
-            <Label Grid.Column="2" Grid.Row="0" Style="{StaticResource DataLabelStyle}" Content="{StaticResource Current}" />
-            <Label Grid.Column="3" Grid.Row="0" Style="{StaticResource DataLabelStyle}" Content="{StaticResource Power}" />
-            <Label Grid.Column="4" Grid.Row="0" Style="{StaticResource DataLabelStyle}" Content="{StaticResource CPUUsage}" />
-            <Label Grid.Column="5" Grid.Row="0" Style="{StaticResource DataLabelStyle}" Content="{StaticResource CPUFrequency}" />
-            <Label Grid.Column="6" Grid.Row="0" Style="{StaticResource DataLabelStyle}" Content="{StaticResource CPUTemperature}" />
-            <Label Grid.Column="7" Grid.Row="0" Style="{StaticResource DataLabelStyle}" Content="{StaticResource UsedMemory}" />
-            <Rectangle Grid.Row="1" Grid.ColumnSpan="8" Height="1" Fill="Black" VerticalAlignment="Top" />
-            <Rectangle Grid.Row="2" Grid.ColumnSpan="8" Height="1" Fill="Black" VerticalAlignment="Top" />
-            <Rectangle Grid.Row="3" Grid.ColumnSpan="8" Height="1" Fill="Black" VerticalAlignment="Top" />
-            <Rectangle Grid.Column="1" Grid.RowSpan="4" Width="1" Fill="Black" HorizontalAlignment="Left" />
-            <Rectangle Grid.Column="2" Grid.RowSpan="4" Width="1" Fill="Black" HorizontalAlignment="Left" />
-            <Rectangle Grid.Column="3" Grid.RowSpan="4" Width="1" Fill="Black" HorizontalAlignment="Left" />
-            <Rectangle Grid.Column="4" Grid.RowSpan="4" Width="1" Fill="Black" HorizontalAlignment="Left" />
-            <Rectangle Grid.Column="5" Grid.RowSpan="4" Width="1" Fill="Black" HorizontalAlignment="Left" />
-            <Rectangle Grid.Column="6" Grid.RowSpan="4" Width="1" Fill="Black" HorizontalAlignment="Left" />
-            <Rectangle Grid.Column="7" Grid.RowSpan="4" Width="1" Fill="Black" HorizontalAlignment="Left" />
-            <Label Grid.Column="1" Grid.Row="2" Style="{StaticResource DataStyle}" Content="{Binding EcuVoltageAvg, Converter={StaticResource FloatToStringConverter} }" />
-            <Label Grid.Column="1" Grid.Row="1" Style="{StaticResource DataStyle}" Content="{Binding EcuVoltageMax, Converter={StaticResource FloatToStringConverter} }" />
-            <Label Grid.Column="1" Grid.Row="3" Style="{StaticResource DataStyle}" Content="{Binding EcuVoltageMin, Converter={StaticResource FloatToStringConverter} }" />
+        <Rectangle Grid.Row="1" Grid.ColumnSpan="8" Height="1" Fill="Black" VerticalAlignment="Top" />
+        <StackPanel Grid.Column="1" Grid.Row="0">
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Grid.Row="0" Style="{StaticResource BoardNameStyle}" Content="{StaticResource ECUBoard}" />
+                <Label Grid.Column="0" Grid.Row="1" Style="{StaticResource DataLabelStyle}" Content="{StaticResource LabelMax}" />
+                <Label Grid.Column="0" Grid.Row="2" Style="{StaticResource DataLabelStyle}" Content="{StaticResource LabelAverage}" />
+                <Label Grid.Column="0" Grid.Row="3" Style="{StaticResource DataLabelStyle}" Content="{StaticResource LabelMin}" />
+                <Label Grid.Column="1" Grid.Row="0" Style="{StaticResource DataLabelStyle}" Content="{StaticResource Voltage}" />
+                <Label Grid.Column="2" Grid.Row="0" Style="{StaticResource DataLabelStyle}" Content="{StaticResource Current}" />
+                <Label Grid.Column="3" Grid.Row="0" Style="{StaticResource DataLabelStyle}" Content="{StaticResource Power}" />
+                <Label Grid.Column="4" Grid.Row="0" Style="{StaticResource DataLabelStyle}" Content="{StaticResource CPUUsage}" />
+                <Label Grid.Column="5" Grid.Row="0" Style="{StaticResource DataLabelStyle}" Content="{StaticResource CPUFrequency}" />
+                <Label Grid.Column="6" Grid.Row="0" Style="{StaticResource DataLabelStyle}" Content="{StaticResource CPUTemperature}" />
+                <Label Grid.Column="7" Grid.Row="0" Style="{StaticResource DataLabelStyle}" Content="{StaticResource UsedMemory}" />
+                <Rectangle Grid.Row="0" Grid.ColumnSpan="8" Height="1" Fill="Black" VerticalAlignment="Top" />
+                <Rectangle Grid.Row="1" Grid.ColumnSpan="8" Height="1" Fill="Black" VerticalAlignment="Top" />
+                <Rectangle Grid.Row="2" Grid.ColumnSpan="8" Height="1" Fill="Black" VerticalAlignment="Top" />
+                <Rectangle Grid.Row="3" Grid.ColumnSpan="8" Height="1" Fill="Black" VerticalAlignment="Top" />
+                <Rectangle Grid.Row="3" Grid.ColumnSpan="8" Height="1" Fill="Black" VerticalAlignment="Bottom" />
+                <Rectangle Grid.Column="0" Grid.RowSpan="4" Width="1" Fill="Black" HorizontalAlignment="Left" />
+                <Rectangle Grid.Column="1" Grid.RowSpan="4" Width="1" Fill="Black" HorizontalAlignment="Left" />
+                <Rectangle Grid.Column="2" Grid.RowSpan="4" Width="1" Fill="Black" HorizontalAlignment="Left" />
+                <Rectangle Grid.Column="3" Grid.RowSpan="4" Width="1" Fill="Black" HorizontalAlignment="Left" />
+                <Rectangle Grid.Column="4" Grid.RowSpan="4" Width="1" Fill="Black" HorizontalAlignment="Left" />
+                <Rectangle Grid.Column="5" Grid.RowSpan="4" Width="1" Fill="Black" HorizontalAlignment="Left" />
+                <Rectangle Grid.Column="6" Grid.RowSpan="4" Width="1" Fill="Black" HorizontalAlignment="Left" />
+                <Rectangle Grid.Column="7" Grid.RowSpan="4" Width="1" Fill="Black" HorizontalAlignment="Left" />
+                <Rectangle Grid.Column="7" Grid.RowSpan="4" Width="1" Fill="Black" HorizontalAlignment="Right" />
+                <Label Grid.Column="1" Grid.Row="2" Style="{StaticResource DataStyle}" Content="{Binding EcuVoltageAvg, Converter={StaticResource FloatToStringConverter} }" />
+                <Label Grid.Column="1" Grid.Row="1" Style="{StaticResource DataStyle}" Content="{Binding EcuVoltageMax, Converter={StaticResource FloatToStringConverter} }" />
+                <Label Grid.Column="1" Grid.Row="3" Style="{StaticResource DataStyle}" Content="{Binding EcuVoltageMin, Converter={StaticResource FloatToStringConverter} }" />
 
-            <Label Grid.Column="2" Grid.Row="2" Style="{StaticResource DataStyle}" Content="{Binding EcuCurrentAvg, Converter={StaticResource FloatToStringConverter} }" />
-            <Label Grid.Column="2" Grid.Row="1" Style="{StaticResource DataStyle}" Content="{Binding EcuCurrentMax, Converter={StaticResource FloatToStringConverter} }" />
-            <Label Grid.Column="2" Grid.Row="3" Style="{StaticResource DataStyle}" Content="{Binding EcuCurrentMin, Converter={StaticResource FloatToStringConverter} }" />
+                <Label Grid.Column="2" Grid.Row="2" Style="{StaticResource DataStyle}" Content="{Binding EcuCurrentAvg, Converter={StaticResource FloatToStringConverter} }" />
+                <Label Grid.Column="2" Grid.Row="1" Style="{StaticResource DataStyle}" Content="{Binding EcuCurrentMax, Converter={StaticResource FloatToStringConverter} }" />
+                <Label Grid.Column="2" Grid.Row="3" Style="{StaticResource DataStyle}" Content="{Binding EcuCurrentMin, Converter={StaticResource FloatToStringConverter} }" />
 
-            <Label Grid.Column="3" Grid.Row="2" Style="{StaticResource DataStyle}" Content="{Binding EcuPowerAvg, Converter={StaticResource FloatToStringConverter} }" />
-            <Label Grid.Column="3" Grid.Row="1" Style="{StaticResource DataStyle}" Content="{Binding EcuPowerMax, Converter={StaticResource FloatToStringConverter} }" />
-            <Label Grid.Column="3" Grid.Row="3" Style="{StaticResource DataStyle}" Content="{Binding EcuPowerMin, Converter={StaticResource FloatToStringConverter} }" />
+                <Label Grid.Column="3" Grid.Row="2" Style="{StaticResource DataStyle}" Content="{Binding EcuPowerAvg, Converter={StaticResource FloatToStringConverter} }" />
+                <Label Grid.Column="3" Grid.Row="1" Style="{StaticResource DataStyle}" Content="{Binding EcuPowerMax, Converter={StaticResource FloatToStringConverter} }" />
+                <Label Grid.Column="3" Grid.Row="3" Style="{StaticResource DataStyle}" Content="{Binding EcuPowerMin, Converter={StaticResource FloatToStringConverter} }" />
 
-            <Label Grid.Column="4" Grid.Row="2" Style="{StaticResource DataStyle}" Content="{Binding EcuCPUUsageAvg, Converter={StaticResource FloatToStringConverter} }" />
-            <Label Grid.Column="4" Grid.Row="1" Style="{StaticResource DataStyle}" Content="{Binding EcuCPUUsageMax, Converter={StaticResource FloatToStringConverter} }" />
-            <Label Grid.Column="4" Grid.Row="3" Style="{StaticResource DataStyle}" Content="{Binding EcuCPUUsageMin, Converter={StaticResource FloatToStringConverter} }" />
+                <Label Grid.Column="4" Grid.Row="2" Style="{StaticResource DataStyle}" Content="{Binding EcuCPUUsageAvg, Converter={StaticResource FloatToStringConverter} }" />
+                <Label Grid.Column="4" Grid.Row="1" Style="{StaticResource DataStyle}" Content="{Binding EcuCPUUsageMax, Converter={StaticResource FloatToStringConverter} }" />
+                <Label Grid.Column="4" Grid.Row="3" Style="{StaticResource DataStyle}" Content="{Binding EcuCPUUsageMin, Converter={StaticResource FloatToStringConverter} }" />
 
-            <Label Grid.Column="5" Grid.Row="2" Style="{StaticResource DataStyle}" Content="{Binding EcuCPUFreqAvg, Converter={StaticResource FloatToStringConverter} }" />
-            <Label Grid.Column="5" Grid.Row="1" Style="{StaticResource DataStyle}" Content="{Binding EcuCPUFreqMax, Converter={StaticResource FloatToStringConverter} }" />
-            <Label Grid.Column="5" Grid.Row="3" Style="{StaticResource DataStyle}" Content="{Binding EcuCPUFreqMin, Converter={StaticResource FloatToStringConverter} }" />
-        </Grid>
+                <Grid Grid.Column="5" Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Grid.Row="0" Style="{StaticResource DataStyle}" Content="{Binding EcuCPUFreqMax0, Converter={StaticResource FloatToStringConverter} }" />
+                    <Label Grid.Column="1" Grid.Row="0" Style="{StaticResource DataStyle}" Content="{Binding EcuCPUFreqMax1, Converter={StaticResource FloatToStringConverter} }" />
+                    <Label Grid.Column="2" Grid.Row="0" Style="{StaticResource DataStyle}" Content="{Binding EcuCPUFreqMax2, Converter={StaticResource FloatToStringConverter} }" />
+                    <Label Grid.Column="3" Grid.Row="0" Style="{StaticResource DataStyle}" Content="{Binding EcuCPUFreqMax3, Converter={StaticResource FloatToStringConverter} }" />
+
+
+                </Grid>
+                <Grid Grid.Column="5" Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Grid.Row="0" Style="{StaticResource DataStyle}" Content="{Binding EcuCPUFreqAvg0, Converter={StaticResource FloatToStringConverter} }" />
+                    <Label Grid.Column="1" Grid.Row="0" Style="{StaticResource DataStyle}" Content="{Binding EcuCPUFreqAvg1, Converter={StaticResource FloatToStringConverter} }" />
+                    <Label Grid.Column="2" Grid.Row="0" Style="{StaticResource DataStyle}" Content="{Binding EcuCPUFreqAvg2, Converter={StaticResource FloatToStringConverter} }" />
+                    <Label Grid.Column="3" Grid.Row="0" Style="{StaticResource DataStyle}" Content="{Binding EcuCPUFreqAvg3, Converter={StaticResource FloatToStringConverter} }" />
+                </Grid>
+                <Grid Grid.Column="5" Grid.Row="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Grid.Row="0" Style="{StaticResource DataStyle}" Content="{Binding EcuCPUFreqMin0, Converter={StaticResource FloatToStringConverter} }" />
+                    <Label Grid.Column="1" Grid.Row="0" Style="{StaticResource DataStyle}" Content="{Binding EcuCPUFreqMin1, Converter={StaticResource FloatToStringConverter} }" />
+                    <Label Grid.Column="2" Grid.Row="0" Style="{StaticResource DataStyle}" Content="{Binding EcuCPUFreqMin2, Converter={StaticResource FloatToStringConverter} }" />
+                    <Label Grid.Column="3" Grid.Row="0" Style="{StaticResource DataStyle}" Content="{Binding EcuCPUFreqMin3, Converter={StaticResource FloatToStringConverter} }" />
+                </Grid>
+
+                <Label Grid.Column="6" Grid.Row="1" Style="{StaticResource DataStyle}" Content="{Binding EcuCPUTemperatureMax, Converter={StaticResource FloatToStringConverter} }" />
+                <Label Grid.Column="6" Grid.Row="2" Style="{StaticResource DataStyle}" Content="{Binding EcuCPUTemperatureAvg, Converter={StaticResource FloatToStringConverter} }" />
+                <Label Grid.Column="6" Grid.Row="3" Style="{StaticResource DataStyle}" Content="{Binding EcuCPUTemperatureMin, Converter={StaticResource FloatToStringConverter} }" />
+                <Label Grid.Column="7" Grid.Row="1" Style="{StaticResource DataStyle}" Content="{Binding EcuUsedMemMax, Converter={StaticResource FloatToStringConverter} }" />
+                <Label Grid.Column="7" Grid.Row="2" Style="{StaticResource DataStyle}" Content="{Binding EcuUsedMemAvg, Converter={StaticResource FloatToStringConverter} }" />
+                <Label Grid.Column="7" Grid.Row="3" Style="{StaticResource DataStyle}" Content="{Binding EcuUsedMemMin, Converter={StaticResource FloatToStringConverter} }" />
+
+            </Grid>
+
+
+            <Grid Margin="0,20,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Grid.Row="0" Style="{StaticResource BoardNameStyle}" Content="{StaticResource CTRBoard}" />
+                <Label Grid.Column="0" Grid.Row="1" Style="{StaticResource DataLabelStyle}" Content="{StaticResource LabelMax}" />
+                <Label Grid.Column="0" Grid.Row="2" Style="{StaticResource DataLabelStyle}" Content="{StaticResource LabelAverage}" />
+                <Label Grid.Column="0" Grid.Row="3" Style="{StaticResource DataLabelStyle}" Content="{StaticResource LabelMin}" />
+                <Label Grid.Column="1" Grid.Row="0" Style="{StaticResource DataLabelStyle}" Content="{StaticResource Pn51xxVoltage}"/>
+                <Label Grid.Column="2" Grid.Row="0" Style="{StaticResource DataLabelStyle}" Content="{StaticResource Pn51xxCurrent}" />
+                <Label Grid.Column="3" Grid.Row="0" Style="{StaticResource DataLabelStyle}" Content="{StaticResource Pn51xxTemperature}" />
+                <Label Grid.Column="4" Grid.Row="0" Style="{StaticResource DataLabelStyle}" Content="{StaticResource CPUUsage}" />
+                <Label Grid.Column="5" Grid.Row="0" Style="{StaticResource DataLabelStyle}" Content="{StaticResource CPUFrequency}" />
+                <Label Grid.Column="6" Grid.Row="0" Style="{StaticResource DataLabelStyle}" Content="{StaticResource CPUTemperature}" />
+                <Label Grid.Column="7" Grid.Row="0" Style="{StaticResource DataLabelStyle}" Content="{StaticResource UsedMemory}" />
+                <Rectangle Grid.Row="0" Grid.ColumnSpan="8" Height="1" Fill="Black" VerticalAlignment="Top" />
+                <Rectangle Grid.Row="1" Grid.ColumnSpan="8" Height="1" Fill="Black" VerticalAlignment="Top" />
+                <Rectangle Grid.Row="2" Grid.ColumnSpan="8" Height="1" Fill="Black" VerticalAlignment="Top" />
+                <Rectangle Grid.Row="3" Grid.ColumnSpan="8" Height="1" Fill="Black" VerticalAlignment="Top" />
+                <Rectangle Grid.Row="3" Grid.ColumnSpan="8" Height="1" Fill="Black" VerticalAlignment="Bottom" />
+                <Rectangle Grid.Column="0" Grid.RowSpan="4" Width="1" Fill="Black" HorizontalAlignment="Left" />
+                <Rectangle Grid.Column="1" Grid.RowSpan="4" Width="1" Fill="Black" HorizontalAlignment="Left" />
+                <Rectangle Grid.Column="2" Grid.RowSpan="4" Width="1" Fill="Black" HorizontalAlignment="Left" />
+                <Rectangle Grid.Column="3" Grid.RowSpan="4" Width="1" Fill="Black" HorizontalAlignment="Left" />
+                <Rectangle Grid.Column="4" Grid.RowSpan="4" Width="1" Fill="Black" HorizontalAlignment="Left" />
+                <Rectangle Grid.Column="5" Grid.RowSpan="4" Width="1" Fill="Black" HorizontalAlignment="Left" />
+                <Rectangle Grid.Column="6" Grid.RowSpan="4" Width="1" Fill="Black" HorizontalAlignment="Left" />
+                <Rectangle Grid.Column="7" Grid.RowSpan="4" Width="1" Fill="Black" HorizontalAlignment="Left" />
+                <Rectangle Grid.Column="7" Grid.RowSpan="4" Width="1" Fill="Black" HorizontalAlignment="Right" />
+                <Label Grid.Column="1" Grid.Row="2" Style="{StaticResource DataStyle}" Content="{Binding PN51xxVoltageAvg, Converter={StaticResource FloatToStringConverter} }" />
+                <Label Grid.Column="1" Grid.Row="1" Style="{StaticResource DataStyle}" Content="{Binding PN51xxVoltageMax, Converter={StaticResource FloatToStringConverter} }" />
+                <Label Grid.Column="1" Grid.Row="3" Style="{StaticResource DataStyle}" Content="{Binding PN51xxVoltageMin, Converter={StaticResource FloatToStringConverter} }" />
+
+                <Label Grid.Column="2" Grid.Row="2" Style="{StaticResource DataStyle}" Content="{Binding PN51xxCurrentAvg, Converter={StaticResource FloatToStringConverter} }" />
+                <Label Grid.Column="2" Grid.Row="1" Style="{StaticResource DataStyle}" Content="{Binding PN51xxCurrentMax, Converter={StaticResource FloatToStringConverter} }" />
+                <Label Grid.Column="2" Grid.Row="3" Style="{StaticResource DataStyle}" Content="{Binding PN51xxCurrentMin, Converter={StaticResource FloatToStringConverter} }" />
+
+                <Label Grid.Column="3" Grid.Row="2" Style="{StaticResource DataStyle}" Content="{Binding PN51xxTemperatureAvg, Converter={StaticResource FloatToStringConverter} }" />
+                <Label Grid.Column="3" Grid.Row="1" Style="{StaticResource DataStyle}" Content="{Binding PN51xxTemperatureMax, Converter={StaticResource FloatToStringConverter} }" />
+                <Label Grid.Column="3" Grid.Row="3" Style="{StaticResource DataStyle}" Content="{Binding PN51xxTemperatureMin, Converter={StaticResource FloatToStringConverter} }" />
+
+                <Label Grid.Column="4" Grid.Row="2" Style="{StaticResource DataStyle}" Content="{Binding CtrCPUUsageAvg, Converter={StaticResource FloatToStringConverter} }" />
+                <Label Grid.Column="4" Grid.Row="1" Style="{StaticResource DataStyle}" Content="{Binding CtrCPUUsageMax, Converter={StaticResource FloatToStringConverter} }" />
+                <Label Grid.Column="4" Grid.Row="3" Style="{StaticResource DataStyle}" Content="{Binding CtrCPUUsageMin, Converter={StaticResource FloatToStringConverter} }" />
+
+                <Grid Grid.Column="5" Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Grid.Row="0" Style="{StaticResource DataStyle}" Content="{Binding CtrCPUFreqMax0, Converter={StaticResource FloatToStringConverter} }" />
+                    <Label Grid.Column="1" Grid.Row="0" Style="{StaticResource DataStyle}" Content="{Binding CtrCPUFreqMax1, Converter={StaticResource FloatToStringConverter} }" />
+
+
+                </Grid>
+                <Grid Grid.Column="5" Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Grid.Row="0" Style="{StaticResource DataStyle}" Content="{Binding CtrCPUFreqAvg0, Converter={StaticResource FloatToStringConverter} }" />
+                    <Label Grid.Column="1" Grid.Row="0" Style="{StaticResource DataStyle}" Content="{Binding CtrCPUFreqAvg1, Converter={StaticResource FloatToStringConverter} }" />
+                </Grid>
+                <Grid Grid.Column="5" Grid.Row="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Grid.Row="0" Style="{StaticResource DataStyle}" Content="{Binding CtrCPUFreqMin0, Converter={StaticResource FloatToStringConverter} }" />
+                    <Label Grid.Column="1" Grid.Row="0" Style="{StaticResource DataStyle}" Content="{Binding CtrCPUFreqMin1, Converter={StaticResource FloatToStringConverter} }" />
+                </Grid>
+
+                <Label Grid.Column="6" Grid.Row="1" Style="{StaticResource DataStyle}" Content="{Binding CtrCPUTemperatureMax, Converter={StaticResource FloatToStringConverter} }" />
+                <Label Grid.Column="6" Grid.Row="2" Style="{StaticResource DataStyle}" Content="{Binding CtrCPUTemperatureAvg, Converter={StaticResource FloatToStringConverter} }" />
+                <Label Grid.Column="6" Grid.Row="3" Style="{StaticResource DataStyle}" Content="{Binding CtrCPUTemperatureMin, Converter={StaticResource FloatToStringConverter} }" />
+                <Label Grid.Column="7" Grid.Row="1" Style="{StaticResource DataStyle}" Content="{Binding CtrUsedMemMax, Converter={StaticResource FloatToStringConverter} }" />
+                <Label Grid.Column="7" Grid.Row="2" Style="{StaticResource DataStyle}" Content="{Binding CtrUsedMemAvg, Converter={StaticResource FloatToStringConverter} }" />
+                <Label Grid.Column="7" Grid.Row="3" Style="{StaticResource DataStyle}" Content="{Binding CtrUsedMemMin, Converter={StaticResource FloatToStringConverter} }" />
+
+            </Grid>
+        </StackPanel>
+       
     </Grid>
 </UserControl>

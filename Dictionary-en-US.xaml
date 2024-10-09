@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:System="clr-namespace:System;assembly=System.Runtime">
+    xmlns:System="clr-namespace:System;assembly=System.Runtime"
+                    xml:space="preserve">
     <System:String x:Key="AppName">BurnIn Logger</System:String>
     <System:String x:Key="MenuFileText">File</System:String>
     <System:String x:Key="MenuExportDatababse">Export Database</System:String>
@@ -39,4 +40,9 @@
     <System:String x:Key="CPUFrequency">CPU Frequency</System:String>
     <System:String x:Key="CPUTemperature">CPU Temperature</System:String>
     <System:String x:Key="UsedMemory">Used Memory</System:String>
+    <System:String x:Key="ECUBoard">ECU BOARD</System:String>
+    <System:String x:Key="CTRBoard">CTR BOARD</System:String>
+    <System:String x:Key="Pn51xxVoltage">PN5190&#x0A;Voltage</System:String>
+    <System:String x:Key="Pn51xxCurrent">PN5190&#x0A;Current</System:String>
+    <System:String x:Key="Pn51xxTemperature">PN5190&#x0A;Temperature</System:String>
 </ResourceDictionary>
